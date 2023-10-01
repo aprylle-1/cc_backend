@@ -95,8 +95,8 @@ class User {
         const check = await db.query(
             `
                 SELECT * FROM following
-                WHERE following_id = $1
-            `,[followingId])
+                WHERE following_id = $1 AND follower_id = $2
+            `,[followingId, followerId])
         
         if (check.rows.length > 0) throw new BadRequestError(`${followerUsername} is already following ${followingUsername}`)
 
