@@ -33,7 +33,6 @@ class User {
             `,
             [username]
         );
-
         if (duplicateCheck.rows[0]) {
             throw new BadRequestError(`Username ${username} already exists.`);
         }
@@ -105,7 +104,7 @@ class User {
             INSERT INTO following
             VALUES ($1, $2)
         `,[followerId, followingId])
-        return "successully followed"
+        return "successfully followed"
     }
 
     static async unfollow (followerUsername, followingUsername) {
@@ -139,7 +138,7 @@ class User {
             FROM following
             WHERE follower_id = $1 AND following_id = $2
         `,[followerId, followingId])
-        return "successully unfollowed"
+        return "successfully unfollowed"
     }
 
     static async getFollowingUsers (username) {

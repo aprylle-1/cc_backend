@@ -55,7 +55,6 @@ router.post("/save", ensureLoggedIn, async function (req, res, next){
         }
         const {prompt, title, content} = req.body
         const username = res.locals.user.username
-        console.log(username)
         const newStory = await Story.save(username, prompt, title, content);
         return res.status(201).json({
             story : newStory
@@ -70,7 +69,6 @@ router.get("/:id/read", async function (req, res, next){
     try{
         let {id} = req.params;
         const story = await Story.read(id);
-        console.log(story)
         return res.status(200).json({
             story : story
         })

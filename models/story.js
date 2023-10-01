@@ -27,7 +27,7 @@ class Story {
             INSERT INTO stories
             (user_id, prompt, title, content, created_on, updated_on)
             VALUES ($1, $2, $3, $4, $5, $6)
-            RETURNING title, content
+            RETURNING title, content, id
         `,[userId, prompt, title, content, currentTimeStamp, currentTimeStamp]);
 
         const story = results.rows[0];
